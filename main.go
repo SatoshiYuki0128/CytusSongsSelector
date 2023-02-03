@@ -1,18 +1,24 @@
 package main
 
 import (
+	"CytusSongsSelector/Controllers"
 	"CytusSongsSelector/Models"
 	"CytusSongsSelector/Songs"
 	"fmt"
+	"github.com/gin-gonic/gin"
 	"math/rand"
 	"time"
 )
 
 func main() {
-	//song := allRandom()
-	//printSong(song)
-	songList := getSongByDifficulty(9)
-	printSong(randomSong(songList))
+	router := gin.Default()
+	v1 := router.Group("/api/v1/song")
+	{
+		v1.POST("/", Controllers.AddSongController)
+		v1.GET("/:difficulty", Controllers.GetSongsByDifficultyController)
+	}
+
+	router.Run()
 }
 
 func randomSong(allSongs []Models.Song) Models.Song {
