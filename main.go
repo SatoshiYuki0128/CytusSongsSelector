@@ -15,10 +15,13 @@ func main() {
 	v1 := router.Group("/api/v1/song")
 	{
 		v1.POST("/", Controllers.AddSongController)
-		v1.GET("/:difficulty", Controllers.GetSongsByDifficultyController)
+		//v1.PUT("/", Controllers.EditSongController)
+		//v1.GET("/:difficulty", Controllers.GetSongsByDifficultyController)
 	}
-
-	router.Run()
+	err := router.Run()
+	if err != nil {
+		return
+	}
 }
 
 func randomSong(allSongs []Models.Song) Models.Song {

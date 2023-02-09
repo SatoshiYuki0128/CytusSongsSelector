@@ -5,8 +5,8 @@ import (
 )
 
 type Song struct {
+	Name       string
 	Chapter    string
 	Sequence   int
-	Name       string
 	Difficulty int
 }

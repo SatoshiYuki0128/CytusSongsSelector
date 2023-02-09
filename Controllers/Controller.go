@@ -26,6 +26,15 @@ func AddSongController(c *gin.Context) {
 	c.JSON(http.StatusOK, gin.H{"data": song})
 }
 
+//func EditSongController(c *gin.Context) {
+//	var request Models.Song
+//	db := Services.DbConnect()
+//	if err := c.ShouldBindJSON(&request); err != nil {
+//		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+//		return
+//	}
+//}
+
 func GetSongsByDifficultyController(c *gin.Context) {
 	var song Models.Song
 	db := Services.DbConnect()
